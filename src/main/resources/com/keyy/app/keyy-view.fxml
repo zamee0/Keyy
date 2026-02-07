@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox fx:id="rootVBox" alignment="TOP_CENTER" prefHeight="305.0" prefWidth="880.0" spacing="40" style="-fx-background-color: #f5f7fa; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.keyy.app.KeyyController">
+
+    <!-- ================= DARK MODE BUTTON (TOP RIGHT) ================= -->
+    <HBox alignment="CENTER_RIGHT">
+        <Button fx:id="darkModeBtn" focusTraversable="false" style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-border-color: transparent;" text="🌙" />
+    </HBox>
+
+    <!-- ================= MAIN TYPING AREA ================= -->
+    <VBox fx:id="typingContainer" alignment="CENTER" spacing="40" VBox.vgrow="ALWAYS">
+
+        <!-- ================= TIMER (BIG YELLOW NUMBER) ================= -->
+        <HBox alignment="CENTER">
+            <Label fx:id="timerLabel" style="-fx-font-size: 32px; -fx-font-weight: bold; -fx-text-fill: #e2b714;" text="0" />
+        </HBox>
+
+        <!-- ================= TEXT TO TYPE ================= -->
+        <TextFlow fx:id="textFlow" lineSpacing="8" prefWidth="800" style="-fx-padding: 20;" textAlignment="LEFT" />
+
+    </VBox>
+
+</VBox>
