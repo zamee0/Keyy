@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="rootVBox" alignment="TOP_CENTER" spacing="30" style="-fx-background-color: #f5f7fa; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.keyy.app.DashboardController">
+
+    <!-- ================= HEADER ================= -->
+    <HBox alignment="CENTER" spacing="20">
+        <Label fx:id="welcomeLabel" style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #323437;" text="Welcome back, User! 👋" />
+
+        <Region HBox.hgrow="ALWAYS" />
+
+        <Button fx:id="darkModeBtn" focusTraversable="false" style="-fx-font-size: 18px; -fx-background-color: transparent; -fx-border-color: transparent; -fx-cursor: hand;" text="🌙" />
+    </HBox>
+
+    <!-- ================= STATS CARDS ================= -->
+    <HBox alignment="CENTER" spacing="20">
+
+        <!-- Best WPM Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 150;">
+            <Label fx:id="bestWpmLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #e2b714;" text="0.0" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;" text="Best WPM" />
+        </VBox>
+
+        <!-- Average WPM Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 150;">
+            <Label fx:id="avgWpmLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #4ade80;" text="0.0" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;" text="Avg WPM" />
+        </VBox>
+
+        <!-- Accuracy Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 150;">
+            <Label fx:id="avgAccuracyLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #a855f7;" text="0.0%" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;" text="Accuracy" />
+        </VBox>
+
+        <!-- Total Tests Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 150;">
+            <Label fx:id="totalAttemptsLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #3b82f6;" text="0" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;" text="Total Tests" />
+        </VBox>
+
+        <!-- Streak Card -->
+        <VBox alignment="CENTER" spacing="10" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-min-width: 150;">
+            <Label fx:id="streakLabel" style="-fx-font-size: 36px; -fx-font-weight: bold; -fx-text-fill: #f87171;" text="0 days" />
+            <Label style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;" text="🔥 Streak" />
+        </VBox>
+
+    </HBox>
+
+    <!-- ================= MAIN ACTIONS ================= -->
+    <VBox alignment="CENTER" spacing="15" style="-fx-background-color: white; -fx-padding: 40; -fx-background-radius: 20; -fx-border-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 15, 0, 0, 3); -fx-min-width: 500;">
+
+        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #323437;" text="What would you like to do?" />
+
+        <Button fx:id="newTestBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #e2b714; -fx-text-fill: #323437; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="🎮 Start New Test" />
+
+        <Button fx:id="progressBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #4ade80; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="📈 View My Progress" />
+
+        <Button fx:id="leaderboardBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #a855f7; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="🏆 Leaderboard" />
+
+        <Button fx:id="settingsBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="⚙Settings" />
+
+        <Separator prefWidth="400" />
+
+        <Button fx:id="logoutBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 16px; -fx-padding: 12 40; -fx-background-color: #f87171; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="🚪 Logout" />
+
+    </VBox>
+
+</VBox>

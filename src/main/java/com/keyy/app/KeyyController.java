@@ -336,6 +336,10 @@ public class KeyyController {
         leaderboardBtn.setFocusTraversable(false);
         leaderboardBtn.setStyle("-fx-font-size: 18px; -fx-padding: 12 30; -fx-cursor: hand; -fx-background-color: #a855f7; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;");
 
+        Button dashboardBtn = new Button("🏠 Dashboard");
+        dashboardBtn.setFocusTraversable(false);
+        dashboardBtn.setStyle("-fx-font-size: 18px; -fx-padding: 12 30; -fx-cursor: hand; -fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;");
+
         Button closeBtn = new Button("✕ Close");
         closeBtn.setFocusTraversable(false);
         closeBtn.setStyle("-fx-font-size: 18px; -fx-padding: 12 30; -fx-cursor: hand; -fx-background-color: #f87171; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold;");
@@ -343,9 +347,10 @@ public class KeyyController {
         retryBtn.setOnAction(e -> resetToTypingScreen());
         dominanceBtn.setOnAction(e -> showDominanceScreen(finalWPM, accuracyValue, percentileBeaten));
         leaderboardBtn.setOnAction(e -> showLeaderboard());
+        dashboardBtn.setOnAction(e -> goToDashboard());
         closeBtn.setOnAction(e -> Platform.exit());
 
-        buttonBox.getChildren().addAll(retryBtn, dominanceBtn, leaderboardBtn, closeBtn);
+        buttonBox.getChildren().addAll(retryBtn, dominanceBtn, leaderboardBtn, dashboardBtn, closeBtn);
 
         resultBox.getChildren().addAll(
                 wpmLabel, wpmText,
@@ -538,7 +543,7 @@ public class KeyyController {
     private void showLeaderboard() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("leaderboard-view.fxml"));
-            Scene scene = new Scene(loader.load(), 900, 700);
+            Scene scene = new Scene(loader.load(), 1000, 700);
 
             LeaderboardController controller = loader.getController();
             controller.setCurrentUser(currentUsername);
@@ -546,6 +551,22 @@ public class KeyyController {
             Stage stage = (Stage) rootVBox.getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("Keyy - Leaderboard");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void goToDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
+            Scene scene = new Scene(loader.load(), 1000, 700);
+
+            DashboardController controller = loader.getController();
+            controller.setCurrentUser(currentUsername);
+
+            Stage stage = (Stage) rootVBox.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("Keyy - Dashboard");
         } catch (IOException e) {
             e.printStackTrace();
         }

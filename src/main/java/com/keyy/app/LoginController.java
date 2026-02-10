@@ -10,51 +10,51 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginController {
-    
+
     @FXML
     private VBox rootVBox;
-    
+
     @FXML
     private TextField usernameField;
-    
+
     @FXML
     private PasswordField passwordField;
-    
+
     @FXML
     private Button loginBtn;
-    
+
     @FXML
     private Button registerBtn;
-    
+
     @FXML
     private Label messageLabel;
-    
+
     @FXML
     private Button darkModeBtn;
-    
+
     private boolean isDarkMode = false;
-    
+
     private static String currentUsername = null;
-    
+
     @FXML
     public void initialize() {
         // Initialize UserManager
         UserManager.initialize();
-        
+
         // Dark mode button
         darkModeBtn.setText("🌙");
         darkModeBtn.setOnAction(e -> toggleDarkMode());
-        
+
         loginBtn.setOnAction(e -> handleLogin());
         registerBtn.setOnAction(e -> handleRegister());
-        
+
         // Enter key support
         passwordField.setOnAction(e -> handleLogin());
     }
-    
+
     private void toggleDarkMode() {
         isDarkMode = !isDarkMode;
-        
+
         if (isDarkMode) {
             darkModeBtn.setText("☀️");
             rootVBox.setStyle("-fx-background-color: #323437; -fx-padding: 40;");
@@ -65,20 +65,20 @@ public class LoginController {
             messageLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: #646669;");
         }
     }
-    
+
     private void handleLogin() {
         String username = usernameField.getText().trim();
         String password = passwordField.getText();
-        
+
         if (username.isEmpty() || password.isEmpty()) {
             showMessage("Please enter username and password!", "#f87171");
             return;
         }
-        
+
         if (UserManager.loginUser(username, password)) {
             currentUsername = username;
             showMessage("Login successful! Loading...", "#4ade80");
-            
+
             // Wait a bit then load typing screen
             new Thread(() -> {
                 try {
@@ -92,26 +92,26 @@ public class LoginController {
             showMessage("Invalid username or password!", "#f87171");
         }
     }
-    
+
     private void handleRegister() {
         String username = usernameField.getText().trim();
         String password = passwordField.getText();
-        
+
         if (username.isEmpty() || password.isEmpty()) {
             showMessage("Please enter username and password!", "#f87171");
             return;
         }
-        
+
         if (username.length() < 3) {
             showMessage("Username must be at least 3 characters!", "#f87171");
             return;
         }
-        
+
         if (password.length() < 4) {
             showMessage("Password must be at least 4 characters!", "#f87171");
             return;
         }
-        
+
         if (UserManager.registerUser(username, password)) {
             showMessage("Registration successful! Please login.", "#4ade80");
             passwordField.clear();
@@ -119,34 +119,36 @@ public class LoginController {
             showMessage("Username already exists!", "#f87171");
         }
     }
-    
+
     private void showMessage(String message, String color) {
         messageLabel.setText(message);
         messageLabel.setStyle("-fx-font-size: 14px; -fx-text-fill: " + color + "; -fx-font-weight: bold;");
     }
-    
+
     private void loadTypingScreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("keyy-view.fxml"));
-            Scene scene = new Scene(loader.load(), 900, 600);
-            
-            // Pass username to KeyyController
-            KeyyController controller = loader.getController();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
+            Scene scene = new Scene(loader.load(), 1000, 700);
+
+            // Pass username to DashboardController
+            DashboardController controller = loader.getController();
             controller.setCurrentUser(currentUsername);
-            
+
             Stage stage = (Stage) rootVBox.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Keyy - " + currentUsername);
+            stage.setTitle("Keyy - Dashboard");
+            stage.setMinWidth(1000);
+            stage.setMinHeight(700);
         } catch (IOException e) {
             e.printStackTrace();
-            showMessage("Error loading typing screen!", "#f87171");
+            showMessage("Error loading dashboard!", "#f87171");
         }
     }
-    
+
     public static String getCurrentUsername() {
         return currentUsername;
     }
-    
+
     public static void setCurrentUsername(String username) {
         currentUsername = username;
     }
