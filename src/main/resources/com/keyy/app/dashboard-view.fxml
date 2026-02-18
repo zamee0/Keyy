@@ -62,8 +62,6 @@
 
         <Button fx:id="settingsBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 18px; -fx-padding: 15 40; -fx-background-color: #3b82f6; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="⚙Settings" />
 
-        <Separator prefWidth="400" />
-
         <Button fx:id="logoutBtn" focusTraversable="false" maxWidth="Infinity" style="-fx-font-size: 16px; -fx-padding: 12 40; -fx-background-color: #f87171; -fx-text-fill: white; -fx-background-radius: 12; -fx-font-weight: bold; -fx-cursor: hand;" text="🚪 Logout" />
 
     </VBox>
