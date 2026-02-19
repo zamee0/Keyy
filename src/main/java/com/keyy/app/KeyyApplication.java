@@ -16,8 +16,14 @@ public class KeyyApplication extends Application {
         // Load login screen
         FXMLLoader fxmlLoader = new FXMLLoader(KeyyApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 700);
+
         stage.setTitle("Keyy - Login");
         stage.setScene(scene);
+
+
+        stage.setResizable(true);
+        stage.setMaximized(true);
+
         stage.show();
     }
 

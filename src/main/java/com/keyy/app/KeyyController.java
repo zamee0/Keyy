@@ -365,9 +365,6 @@ public class KeyyController {
     }
 
     private double calculatePercentile(double wpm) {
-        // Based on typical WPM distribution
-        // Average: 41 WPM, Median: ~40 WPM
-        // Using approximate normal distribution
 
         if (wpm >= 120) return 99.9;
         if (wpm >= 100) return 99.0;
@@ -543,13 +540,14 @@ public class KeyyController {
     private void showLeaderboard() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("leaderboard-view.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 700);
+            Scene scene = new Scene(loader.load());
 
             LeaderboardController controller = loader.getController();
             controller.setCurrentUser(currentUsername);
 
             Stage stage = (Stage) rootVBox.getScene().getWindow();
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.setTitle("Keyy - Leaderboard");
         } catch (IOException e) {
             e.printStackTrace();
@@ -559,13 +557,14 @@ public class KeyyController {
     private void goToDashboard() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 700);
+            Scene scene = new Scene(loader.load());
 
             DashboardController controller = loader.getController();
             controller.setCurrentUser(currentUsername);
 
             Stage stage = (Stage) rootVBox.getScene().getWindow();
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.setTitle("Keyy - Dashboard");
         } catch (IOException e) {
             e.printStackTrace();

@@ -228,13 +228,14 @@ public class ProgressController {
     private void goBackToDashboard() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard-view.fxml"));
-            Scene scene = new Scene(loader.load(), 1000, 700);
+            Scene scene = new Scene(loader.load());
 
             DashboardController controller = loader.getController();
             controller.setCurrentUser(currentUsername);
 
             Stage stage = (Stage) rootVBox.getScene().getWindow();
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.setTitle("Keyy - Dashboard");
         } catch (IOException e) {
             e.printStackTrace();

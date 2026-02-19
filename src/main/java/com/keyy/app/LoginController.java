@@ -11,50 +11,30 @@ import java.io.IOException;
 
 public class LoginController {
 
-    @FXML
-    private VBox rootVBox;
-
-    @FXML
-    private TextField usernameField;
-
-    @FXML
-    private PasswordField passwordField;
-
-    @FXML
-    private Button loginBtn;
-
-    @FXML
-    private Button registerBtn;
-
-    @FXML
-    private Label messageLabel;
-
-    @FXML
-    private Button darkModeBtn;
+    @FXML private VBox rootVBox;
+    @FXML private TextField usernameField;
+    @FXML private PasswordField passwordField;
+    @FXML private Button loginBtn;
+    @FXML private Button registerBtn;
+    @FXML private Label messageLabel;
+    @FXML private Button darkModeBtn;
 
     private boolean isDarkMode = false;
-
     private static String currentUsername = null;
 
     @FXML
     public void initialize() {
-        // Initialize UserManager
         UserManager.initialize();
 
-        // Dark mode button
         darkModeBtn.setText("🌙");
         darkModeBtn.setOnAction(e -> toggleDarkMode());
-
         loginBtn.setOnAction(e -> handleLogin());
         registerBtn.setOnAction(e -> handleRegister());
-
-        // Enter key support
         passwordField.setOnAction(e -> handleLogin());
     }
 
     private void toggleDarkMode() {
         isDarkMode = !isDarkMode;
-
         if (isDarkMode) {
             darkModeBtn.setText("☀️");
             rootVBox.setStyle("-fx-background-color: #323437; -fx-padding: 40;");
@@ -78,8 +58,6 @@ public class LoginController {
         if (UserManager.loginUser(username, password)) {
             currentUsername = username;
             showMessage("Login successful! Loading...", "#4ade80");
-
-            // Wait a bit then load typing screen
             new Thread(() -> {
                 try {
                     Thread.sleep(500);
@@ -135,10 +113,22 @@ public class LoginController {
             controller.setCurrentUser(currentUsername);
 
             Stage stage = (Stage) rootVBox.getScene().getWindow();
+
+            // Save maximize state BEFORE changing scene
+            boolean wasMaximized = stage.isMaximized();
+
             stage.setScene(scene);
             stage.setTitle("Keyy - Dashboard");
-            stage.setMinWidth(1000);
-            stage.setMinHeight(700);
+
+            // CRITICAL FIX: Use Platform.runLater to restore maximize
+            javafx.application.Platform.runLater(() -> {
+                if (wasMaximized) {
+                    stage.setMaximized(false);  // First set to false
+                    stage.setMaximized(true);   // Then set to true (forces refresh)
+                }
+                stage.centerOnScreen();  // Optional: center the window
+            });
+
         } catch (IOException e) {
             e.printStackTrace();
             showMessage("Error loading dashboard!", "#f87171");

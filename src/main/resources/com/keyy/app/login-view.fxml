@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox
-        fx:id="rootVBox"
-        alignment="CENTER"
-        spacing="30"
-        xmlns="http://javafx.com/javafx/21"
-        xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="com.keyy.app.LoginController"
-        style="-fx-background-color: #f5f7fa; -fx-padding: 40;"
->
+<VBox fx:id="rootVBox"
+      alignment="CENTER"
+      spacing="30"
+      prefWidth="600"
+      prefHeight="700"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.keyy.app.LoginController"
+      style="-fx-background-color: #f5f7fa; -fx-padding: 40;">
 
     <!-- Dark Mode Button (Top Right) -->
     <HBox alignment="TOP_RIGHT">
@@ -27,14 +27,14 @@
 
     <!-- Login Box -->
     <VBox alignment="CENTER" spacing="25" style="-fx-background-color: white; -fx-padding: 50; -fx-background-radius: 15; -fx-border-radius: 15; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);">
-        
+
         <!-- Title -->
         <Label text="⌨️ Keyy" style="-fx-font-size: 48px; -fx-font-weight: bold; -fx-text-fill: #e2b714;"/>
-        
+
         <Label text="Type Fast, Type Smart" style="-fx-font-size: 16px; -fx-text-fill: #646669;"/>
-        
+
         <Separator prefWidth="300"/>
-        
+
         <!-- Username Field -->
         <VBox spacing="8" alignment="CENTER_LEFT">
             <Label text="Username" style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;"/>
@@ -45,7 +45,7 @@
                     style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #dcdcdc; -fx-border-radius: 8;"
             />
         </VBox>
-        
+
         <!-- Password Field -->
         <VBox spacing="8" alignment="CENTER_LEFT">
             <Label text="Password" style="-fx-font-size: 14px; -fx-text-fill: #646669; -fx-font-weight: bold;"/>
@@ -56,10 +56,10 @@
                     style="-fx-font-size: 14px; -fx-padding: 10; -fx-background-radius: 8; -fx-border-color: #dcdcdc; -fx-border-radius: 8;"
             />
         </VBox>
-        
+
         <!-- Message Label -->
         <Label fx:id="messageLabel" text="" style="-fx-font-size: 14px; -fx-text-fill: #646669;"/>
-        
+
         <!-- Buttons -->
         <HBox spacing="15" alignment="CENTER">
             <Button
@@ -75,9 +75,9 @@
                     style="-fx-font-size: 16px; -fx-padding: 12 40; -fx-background-color: #4ade80; -fx-text-fill: white; -fx-background-radius: 8; -fx-font-weight: bold; -fx-cursor: hand;"
             />
         </HBox>
-        
+
     </VBox>
-    
+
     <!-- Footer -->
     <Label text="New here? Click Register to create an account" style="-fx-font-size: 12px; -fx-text-fill: #646669;"/>
 

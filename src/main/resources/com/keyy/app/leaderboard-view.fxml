@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 
-<VBox fx:id="rootVBox" alignment="TOP_CENTER" prefHeight="315.0" prefWidth="619.0" spacing="30" style="-fx-background-color: #f5f7fa; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.keyy.app.LeaderboardController">
+<VBox fx:id="rootVBox" alignment="TOP_CENTER" spacing="30" style="-fx-background-color: #f5f7fa; -fx-padding: 40;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.keyy.app.LeaderboardController">
 
     <!-- Header -->
     <HBox alignment="CENTER" spacing="20">
